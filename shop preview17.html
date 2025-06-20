@@ -107,6 +107,12 @@
 								<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 									<p class="price">
 										<span class="amount">$0</span>
+
+	    <!--Buat Free Download-->
+
+		<a href="https://drive.google.com/file/d/1F4a-mDHIEmAPTQ2kysE51LsCWC0uFLQ5/view?usp=share_link" target="https://drive.google.com/file/d/1F4a-mDHIEmAPTQ2kysE51LsCWC0uFLQ5/view?usp=share_link"></p1><br><br><img src="images/icon.png" alt="logo"><br></a></h3>
+
+		<!--Buat Free Download-->
 									</p>
 									<meta itemprop="price" content="35"/>
 									<meta itemprop="priceCurrency" content="USD"/>
@@ -117,98 +123,9 @@
 								</div>
 								<br>
 								<br>
-								
-		<!-- Replace "test" with your own sandbox Business account app client ID -->
-		<script src="https://www.paypal.com/sdk/js?client-id=AY6JRRQyhaKjT-dyiUrnKxqwspFcqalb53_Q4LpHtqv0Igu1mtJDPhuku-p7Tmn6kCYcZhV594BS099r&currency=USD"></script>
-		<!-- Set up a container element for the button -->
-		<div id="paypal-button-container"></div>
-		<script>
-		paypal.Buttons({
-		createOrder() {
-			// This function sets up the details of the transaction, including the amount and line item details.
-			return fetch("/my-server/create-paypal-order", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				cart: [
-					
-				{
-					sku: "YOUR_PRODUCT_STOCK_KEEPING_UNIT",
-					quantity: "YOUR_PRODUCT_QUANTITY"
-				}
-				]
-			})
-			});
-		},
-		onApprove(data) {
-			// This function captures the funds from the transaction.
-			return fetch("/my-server/capture-paypal-order", {
-			method: "POST",
-			body: JSON.stringify({
-				orderID: data.orderID
-			})
-			})
-			.then((response) => response.json())
-			.then((details) => {
-			// This function shows a transaction success message to your buyer.
-			alert('Transaction completed by ' + details.payer.name.given_name);
-			});
-		}
-		}).render('#paypal-button-container');
-		//This function displays payment buttons on your web page.
 		
 		</script>
-		<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=buttons&vault=true&intent=subscription"></script>
 
-
-		<!--Supaya bisa ke login-->
-		<div id="smart-button-container">
-			<div style="text-align: center;">
-				<div id="paypal-button-container"></div>
-			</div>
-		</div>
-		<script src="https://www.paypal.com/sdk/js?client-id=AY6JRRQyhaKjT-dyiUrnKxqwspFcqalb53_Q4LpHtqv0Igu1mtJDPhuku-p7Tmn6kCYcZhV594BS099r&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
-		<script>
-			function initPayPalButton() {
-				paypal.Buttons({
-					style: {
-						shape: 'rect',
-						color: 'gold',
-						layout: 'vertical',
-						label: 'paypal',
-					},
-
-					createOrder: function(data, actions) {
-						return actions.order.create({
-							purchase_units: [{"amount":{"currency_code": "USD", "value": 0}}]
-						});
-					},
-
-					onApprove: function(data, actions) {
-						return actions.order.capture().then(function(orderData) {
-
-							// Full available details
-							console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-
-							// Show a success message within this page, for example:
-							const element = document.getElementById('paypal-button-container');
-							element.innerHTML = '';
-							element.innerHTML = '<h3>Thank you for your payment! <a href="https://www.militaria.pl/voyovnik/koszulka_t-shirt_damska_voyovnik_samurai_on_fire_-_czarna_vd3-2105-35-cz_p1018010.xml" target="https://www.militaria.pl/voyovnik/koszulka_t-shirt_damska_voyovnik_samurai_on_fire_-_czarna_vd3-2105-35-cz_p1018010.xml"></p1><br><br><img src="images/icon.png" alt="logo"><br></a></h3>';
-
-							// Or go to another URL:  actions.redirect('thank_you.html');
-
-						});
-					},
-
-					onError: function(err) {
-						console.log(err);
-					}
-				}).render('#paypal-button-container');
-			}
-			initPayPalButton();
-		</script>
 		<!--akhir-->
 
 							</div>
